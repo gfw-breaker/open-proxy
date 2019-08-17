@@ -5,7 +5,7 @@ DATADIR=/var/lib/awstats/$WEBSITE
 NGINX=/usr/share/nginx/html
 
 # install 
-yum install -y awstats htmldoc geoip-geolite perl-Geo-IP perl-CPAN
+yum install -y awstats htmldoc geoip geoip-geolite perl-Geo-IP perl-CPAN
 
 echo yes | perl -MCPAN -e "install Geo::IP::PurePerl"
 perl -MCPAN -e "install Geo::IP"
