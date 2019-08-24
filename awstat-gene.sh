@@ -23,4 +23,5 @@ done
 ## host pages
 cp /var/lib/awstats/$WEBSITE/static/awstats* /usr/share/nginx/html/awstats/
 
-
+## update geoip
+geoipupdate

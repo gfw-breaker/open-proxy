@@ -5,7 +5,10 @@ DATADIR=/var/lib/awstats/$WEBSITE
 NGINX=/usr/share/nginx/html
 
 # install 
-yum install -y awstats htmldoc geoip-geolite perl-Geo-IP
+yum install -y awstats htmldoc geoip geoip-geolite perl-Geo-IP perl-CPAN
+
+echo yes | perl -MCPAN -e "install Geo::IP::PurePerl"
+perl -MCPAN -e "install Geo::IP"
 
 [ ! -d $DATADIR/static ] && \
     mkdir -p $DATADIR/static
@@ -35,8 +38,8 @@ sed -i -e "s|^\(DirCgi\)=.*$|\1=\"cgi-bin\"|g" \
 
 sed -i -e '/^LoadPlugin=.*/d' /etc/awstats/awstats.$WEBSITE.conf
 cat << _EOF >> /etc/awstats/awstats.$WEBSITE.conf
-#LoadPlugin="geoip GEOIP_STANDARD /usr/share/GeoIP/GeoIP.dat"
-#LoadPlugin="geoip_city_maxmind GEOIP_STANDARD /usr/share/GeoIP/GeoIPCity.dat" 
+LoadPlugin="geoip GEOIP_STANDARD /usr/share/GeoIP/GeoIP.dat"
+LoadPlugin="geoip_city_maxmind GEOIP_STANDARD /usr/share/GeoIP/GeoIPCity.dat" 
 _EOF
 
 sed -i -e "s|^\(LogFormat\)=.*$|\1=\"%host %other %logname %time1 %methodurl %code %bytesd %refererquot %uaquot\"|g" \
