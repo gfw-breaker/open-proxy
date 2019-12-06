@@ -2,7 +2,7 @@
 # auth : gfw-breaker
 
 rpm -ihv http://installrepo.kaltura.org/releases/kaltura-release.noarch.rpm
-yum install -y kaltura-nginx
+yum install -y kaltura-nginx-1.16.0-2
 
 rm -fr /etc/nginx/conf.d/*
 
