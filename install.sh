@@ -9,7 +9,11 @@ rm -fr /etc/nginx/conf.d/*
 mkdir -p /usr/local/nginx/content/cache
 mkdir -p /usr/share/nginx/html
 
-server_ip=$(ifconfig | grep "inet" | sed -n 1p | cut -d':' -f2 | cut -d' ' -f1)
+server_ip=$(ifconfig | grep "inet addr" | sed -n 1p | cut -d':' -f2 | cut -d' ' -f1)
+
+if [ -z $server_ip ]; then
+	server_ip=$(ifconfig | grep "broadcast" | awk '{print $2}')
+fi
 
 for f in $(ls sites/*.conf); do
 	sed -i "s/local_server_ip/$server_ip/g" $f
