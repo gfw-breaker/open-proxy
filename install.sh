@@ -27,8 +27,13 @@ cp common/* /etc/nginx/
 cp sites/* /etc/nginx/conf.d
 cp pages/* /usr/share/nginx/html
 
+# CentOS6
 mv /etc/init.d/kaltura-nginx /etc/init.d/nginx
-
 chkconfig nginx on
+
+# CentOS7
+mv /usr/lib/systemd/system/kaltura-nginx.service /usr/lib/systemd/system/nginx.service
+systecmctl enable nginx
+
 service nginx restart
 
