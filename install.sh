@@ -33,7 +33,7 @@ chkconfig nginx on
 
 # CentOS7
 mv /usr/lib/systemd/system/kaltura-nginx.service /usr/lib/systemd/system/nginx.service
-systecmctl enable nginx
+systemctl enable nginx
 
 service nginx restart
 
