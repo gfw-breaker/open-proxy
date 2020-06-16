@@ -7,6 +7,9 @@ NGINX=/usr/share/nginx/html
 # install 
 yum install -y awstats htmldoc geoip geoip-geolite perl-Geo-IP perl-CPAN
 
+wget http://gfw-breaker.win/videos/binary/GeoIPCity.dat -O /usr/share/GeoIP/GeoIPCity.dat
+wget http://gfw-breaker.win/videos/binary/GeoIP.dat -O /usr/share/GeoIP/GeoIP.dat
+
 echo yes | perl -MCPAN -e "install Geo::IP::PurePerl"
 perl -MCPAN -e "install Geo::IP"
 
