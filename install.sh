@@ -10,22 +10,24 @@ mkdir -p /usr/local/nginx/content/cache
 mkdir -p /usr/share/nginx/html
 
 server_ip=$(/sbin/ifconfig | grep "inet addr" | sed -n 1p | cut -d':' -f2 | cut -d' ' -f1)
+data_server_ip=$server_ip
 
 if [ -z $server_ip ]; then
 	server_ip=$(/sbin/ifconfig | grep "broadcast" | awk '{print $2}')
 fi
 
-for f in $(ls sites/*.conf); do
-	sed -i "s/local_server_ip/$server_ip/g" $f
-done
-
-for f in $(ls pages/*.html); do
-	sed -i "s/local_server_ip/$server_ip/g" $f
-done
-
 cp common/* /etc/nginx/
 cp sites/* /etc/nginx/conf.d
 cp pages/* /usr/share/nginx/html
+
+for f in $(ls /etc/nginx/conf.d/*.conf); do
+	sed -i "s/local_server_ip/$server_ip/g" $f
+	sed -i "s/data_server_ip/$data_server_ip/g" $f
+done
+
+for f in $(ls /usr/share/nginx/html/*.html); do
+	sed -i "s/local_server_ip/$server_ip/g" $f
+done
 
 # CentOS6
 mv /etc/init.d/kaltura-nginx /etc/init.d/nginx
