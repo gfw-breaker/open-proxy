@@ -6,7 +6,7 @@ yum install -y kaltura-nginx-1.16.0-2
 
 rm -fr /etc/nginx/conf.d/*
 
-mkdir -p /usr/local/nginx/content/cache
+mkdir -p /usr/share/nginx/cache
 mkdir -p /usr/share/nginx/html
 
 server_ip=$(/sbin/ifconfig | grep "inet addr" | sed -n 1p | cut -d':' -f2 | cut -d' ' -f1)
