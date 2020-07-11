@@ -10,11 +10,12 @@ mkdir -p /usr/share/nginx/cache
 mkdir -p /usr/share/nginx/html
 
 server_ip=$(/sbin/ifconfig | grep "inet addr" | sed -n 1p | cut -d':' -f2 | cut -d' ' -f1)
-data_server_ip=$server_ip
 
 if [ -z $server_ip ]; then
 	server_ip=$(/sbin/ifconfig | grep "broadcast" | awk '{print $2}')
 fi
+
+data_server_ip=$server_ip
 
 cp common/* /etc/nginx/
 cp sites/* /etc/nginx/conf.d
