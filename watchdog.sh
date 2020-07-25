@@ -7,7 +7,7 @@ source /etc/profile
 used=$(df | grep '/dev/vda1' | awk '{print $5}')
 
 if [ ! '100%' == $used ]; then
-	echo -e "Disk usage : \t$used"
+	echo -e "Disk usage  : \t$used"
 else
 	rm -fr /var/log/nginx/access.log-*
 	rm -fr /var/log/nginx/error.log-*
@@ -21,7 +21,7 @@ fi
 mem=$(free -m | grep Mem | awk '{ print $4 }')
 
 if [ "$mem" -gt "90" ]; then
-	echo -e "Free memory: \t$mem MB"
+	echo -e "Free memory : \t$mem MB"
 else
 	echo "Releasing memory ... "
 	sync
