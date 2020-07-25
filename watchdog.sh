@@ -20,7 +20,7 @@ fi
 # Memory
 mem=$(free -m | grep Mem | awk '{ print $4 }')
 
-if [ "$mem" -gt "80" ]; then
+if [ "$mem" -gt "90" ]; then
 	echo -e "Free memory: \t$mem MB"
 else
 	echo "Releasing memory ... "
