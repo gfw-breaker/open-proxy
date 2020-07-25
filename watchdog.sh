@@ -24,6 +24,6 @@ if [ "$mem" -gt "65" ]; then
 	echo -e "Free memory: \t$mem MB"
 else
 	echo "Reboot server..."
-	$init 6
+	init 6
 fi
 
