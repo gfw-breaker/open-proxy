@@ -4,7 +4,7 @@ source /etc/profile
 
 
 # Disk 
-used=$(/usr/bin/df | grep '/dev/vda1' | awk '{print $5}')
+used=$(df | grep '/dev/vda1' | awk '{print $5}')
 
 if [ ! '100%' == $used ]; then
 	echo -e "Disk usage : \t$used"
