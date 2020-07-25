@@ -20,12 +20,12 @@ fi
 # Memory
 mem=$(free -m | grep Mem | awk '{ print $4 }')
 
-if [ "$mem" -gt "70" ]; then
+if [ "$mem" -gt "80" ]; then
 	echo -e "Free memory: \t$mem MB"
 else
 	echo "Releasing memory ... "
 	sync
 	echo 1 > /proc/sys/vm/drop_caches
-	service nginx restart
+	service nginx reload
 fi
 
