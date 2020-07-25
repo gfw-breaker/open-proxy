@@ -20,7 +20,7 @@ fi
 # Memory
 mem=$(free -m | grep Mem | awk '{ print $4 }')
 
-if [ "$mem" -gt "70" ]; then
+if [ "$mem" -gt "65" ]; then
 	echo -e "Free memory: \t$mem MB"
 else
 	echo "Reboot server..."
