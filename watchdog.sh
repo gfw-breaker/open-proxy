@@ -7,7 +7,7 @@ source /etc/profile
 used=$(/usr/bin/df | grep '/dev/vda1' | awk '{print $5}')
 
 if [ ! '100%' == $used ]; then
-	echo -e "Disk usage: \t$used"
+	echo -e "Disk usage : \t$used"
 else
 	rm -fr /var/log/nginx/access.log-*
 	rm -fr /var/log/nginx/error.log-*
