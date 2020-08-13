@@ -65,6 +65,15 @@ p b {
 </b>
 </center>
 
+<script>
+var ts = Date.parse(new Date());
+
+var x = document.getElementsByTagName("audio");
+for (var i = 0; i < x.length; i++) {
+  	x[i].src = x[i].src + '?' + ts;
+}
+</script>
+
 </body>
 </html>
 
