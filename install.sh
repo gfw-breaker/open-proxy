@@ -11,10 +11,10 @@ mkdir -p /usr/share/nginx/html
 
 source config
 
-server_ip=$(/sbin/ifconfig | grep "inet addr" | sed -n 1p | cut -d':' -f2 | cut -d' ' -f1)
+server_ip=$(/sbin/ifconfig eth0 | grep "inet addr" | sed -n 1p | cut -d':' -f2 | cut -d' ' -f1)
 
 if [ -z $server_ip ]; then
-	server_ip=$(/sbin/ifconfig | grep "broadcast" | awk '{print $2}')
+	server_ip=$(/sbin/ifconfig eth0 | grep "broadcast" | awk '{print $2}')
 fi
 
 if [ -z $data_server_ip ]; then
