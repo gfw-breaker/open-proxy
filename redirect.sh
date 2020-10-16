@@ -9,4 +9,6 @@ done
 
 service nginx restart
 
+/usr/bin/systemctl restart nginx
+
 
