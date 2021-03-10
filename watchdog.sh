@@ -4,10 +4,10 @@ source /etc/profile
 
 
 # Disk 
-used=$(df | grep '/dev/vda1' | awk '{print $5}')
+used=$(df | grep '/dev/vda1' | awk '{print $5}' | cut -d'%' -f1)
 
-if [ ! '100%' == $used ]; then
-	echo -e "Disk usage  : \t$used"
+if [ "$used" -lt "99" ]; then
+	echo -e "Disk usage  : \t$used%"
 else
 	rm -fr /var/log/nginx/access.log-*
 	rm -fr /var/log/nginx/error.log-*
